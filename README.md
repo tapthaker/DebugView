@@ -7,8 +7,7 @@ Debug View is a simple implementation of method swizzling to add red borders ove
 ##Installation
 
 
-1 - Download the proj and copy "UIView+Debug.h" & "UIView+Debug.m" in your project
-2 - Add the following import in your [project-name]-prefix.pch file
+Download the proj and copy "UIView+Debug.h" & "UIView+Debug.m" in your project
       #import "UIView+Debug.h"
       
       
