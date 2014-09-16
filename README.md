@@ -23,3 +23,9 @@ Simply import the "UIView+Debug.h" into that controller or view class
 ![Screenshot 1](./screenshot1.png)
 
 ![Screenshot 2](./screenshot2.png)
+
+##Or you could try code injection
+
+![Phone.app after code injection](./screenshot3.png)
+
+![Game center after code injection](./screenshot4.png)
