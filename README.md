@@ -10,7 +10,7 @@ Download the project and copy the file in "Source" directory into your project
 
 ## Usage (•ิ_•ิ)?
 
-*Nothing to do here*, things will work automatically. YAY ＼（＾ ＾）／
+**Nothing to do here**, things will work automatically. YAY **＼（＾ ＾）／**
       
 ##Examples 
 
@@ -38,6 +38,6 @@ Follow me on Twitter ([@tapthaker](https://twitter.com/tapthaker))
 
 ## To improve
 
-* Add *cocoapods* to the project
+* Add **cocoapods** to the project
 * More debug additions.
 * Someway to filter and display only a part of the full info.
