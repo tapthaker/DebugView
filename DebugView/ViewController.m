@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "DebugFrameView.h"
 
 @interface ViewController ()
 
