@@ -21,7 +21,7 @@ Download the project and copy the file in "Source" directory into your project
 ![Screenshot 2](./screenshot2.png)
 
 ##Or you could try code injection 
-### PS : Updated my iPhone to iOS 8, the screenshots below are of older version
+**PS : Updated my iPhone to iOS 8, so you will have to wait for updated screenshots**
 
 ![Phone.app after code injection](./screenshot3.png)
 
