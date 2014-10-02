@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF11D4AF19DD6A2300990980 /* DebugFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF11D4AE19DD6A2300990980 /* DebugFrameView.m */; };
 		FFD40F6019B0DE22003CB3F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFD40F5F19B0DE22003CB3F0 /* Foundation.framework */; };
 		FFD40F6219B0DE22003CB3F0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFD40F6119B0DE22003CB3F0 /* CoreGraphics.framework */; };
 		FFD40F6419B0DE22003CB3F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFD40F6319B0DE22003CB3F0 /* UIKit.framework */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FF11D4AD19DD6A2300990980 /* DebugFrameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugFrameView.h; sourceTree = "<group>"; };
+		FF11D4AE19DD6A2300990980 /* DebugFrameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugFrameView.m; sourceTree = "<group>"; };
 		FFD40F5C19B0DE22003CB3F0 /* DebugView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DebugView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFD40F5F19B0DE22003CB3F0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FFD40F6119B0DE22003CB3F0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -122,6 +125,8 @@
 				FFD40F7519B0DE22003CB3F0 /* ViewController.m */,
 				FFD40F9419B0E473003CB3F0 /* UIView+Debug.h */,
 				FFD40F9519B0E473003CB3F0 /* UIView+Debug.m */,
+				FF11D4AD19DD6A2300990980 /* DebugFrameView.h */,
+				FF11D4AE19DD6A2300990980 /* DebugFrameView.m */,
 				FFD40F7719B0DE22003CB3F0 /* Images.xcassets */,
 				FFD40F6619B0DE22003CB3F0 /* Supporting Files */,
 			);
@@ -204,6 +209,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Tapan;
 				TargetAttributes = {
+					FFD40F5B19B0DE22003CB3F0 = {
+						DevelopmentTeam = E888NAK43S;
+					};
 					FFD40F7C19B0DE22003CB3F0 = {
 						TestTargetID = FFD40F5B19B0DE22003CB3F0;
 					};
@@ -255,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFD40F9619B0E473003CB3F0 /* UIView+Debug.m in Sources */,
+				FF11D4AF19DD6A2300990980 /* DebugFrameView.m in Sources */,
 				FFD40F7619B0DE22003CB3F0 /* ViewController.m in Sources */,
 				FFD40F7019B0DE22003CB3F0 /* AppDelegate.m in Sources */,
 				FFD40F6C19B0DE22003CB3F0 /* main.m in Sources */,
@@ -382,10 +391,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DebugView/DebugView-Prefix.pch";
 				INFOPLIST_FILE = "DebugView/DebugView-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -395,10 +407,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DebugView/DebugView-Prefix.pch";
 				INFOPLIST_FILE = "DebugView/DebugView-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -462,6 +477,7 @@
 				FFD40F9019B0DE22003CB3F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FFD40F9119B0DE22003CB3F0 /* Build configuration list for PBXNativeTarget "DebugViewTests" */ = {
 			isa = XCConfigurationList;
@@ -470,6 +486,7 @@
 				FFD40F9319B0DE22003CB3F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

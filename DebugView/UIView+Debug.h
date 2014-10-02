@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DebugFrameView.h"
 
 @interface UIView (Debug)
+
 
 @end

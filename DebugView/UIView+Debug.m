@@ -11,9 +11,12 @@
 
 @implementation UIView (Debug)
 
-+ (void)swizzleSelector:(SEL)originalSelector withSelector:(SEL)swizzledSelector {
-    Class class = [self class];
+static DebugFrameView *debugFrameView =nil;
 
+
++ (void)swizzleSelector:(SEL)originalSelector withSelector:(SEL)swizzledSelector {
+    
+    Class class = [self class];
     
     Method originalMethod = class_getInstanceMethod(class, originalSelector);
     Method swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
@@ -31,33 +34,70 @@
 
 +(void)load{
     
-    
-    [self swizzleSelector:@selector(init) withSelector:@selector(init_debug)];
-    [self swizzleSelector:@selector(awakeFromNib) withSelector:@selector(awakeFromNib_debug)];
-    [self swizzleSelector:@selector(initWithFrame:) withSelector:@selector(initWithFrame_debug:)];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self swizzleSelector:@selector(init) withSelector:@selector(init_debug)];
+        [self swizzleSelector:@selector(awakeFromNib) withSelector:@selector(awakeFromNib_debug)];
+        [self swizzleSelector:@selector(initWithFrame:) withSelector:@selector(initWithFrame_debug:)];
+        [self swizzleSelector:@selector(didAddSubview:) withSelector:@selector(didAddSubview_debug:)];
+        [self swizzleSelector:@selector(willRemoveSubview:) withSelector:@selector(willRemoveSubview_debug:)];
+         [self swizzleSelector:@selector(setFrame:) withSelector:@selector(setFrame_debug:)];
+    });
 }
 
 -(id)init_debug{
     
     self = [self init_debug];
-    [self addBorders];
+    [self commonInitialization];
     return self;
 }
 
-
 -(void)awakeFromNib_debug{
-    [self addBorders];
+    [self commonInitialization];
 }
 
 -(id)initWithFrame_debug:(CGRect)frame{
     self = [self initWithFrame_debug:frame];
-    [self addBorders];
+    [self commonInitialization];
     return self;
 }
 
--(void)addBorders{
+-(void)commonInitialization{
     self.layer.borderColor = [UIColor redColor].CGColor;
     self.layer.borderWidth = 1.0;
+
+    if ([self isKindOfClass:[UIWindow class]]) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            debugFrameView=[[DebugFrameView alloc]init];
+            [self addSubview:debugFrameView];
+        });
+    }
 }
+
+-(void)didAddSubview_debug:(UIView *)subview{
+    [self didAddSubview_debug:subview];
+    
+    [self.window bringSubviewToFront:debugFrameView];
+    [debugFrameView.views addObject:subview];
+    [debugFrameView setNeedsDisplay];
+}
+
+-(void)willRemoveSubview_debug:(UIView *)subview{
+    [self willRemoveSubview_debug:subview];
+    
+    [debugFrameView.views removeObject:subview];
+    [debugFrameView setNeedsDisplay];
+}
+
+-(void)setFrame_debug:(CGRect)frame{
+    
+    [self setFrame_debug:frame];
+    
+    [debugFrameView setNeedsDisplay];
+    
+}
+
+
 
 @end
