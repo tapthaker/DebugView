@@ -110,6 +110,21 @@
     NSString *stringH = [NSString stringWithFormat:@"%0.f",frame.size.height];
     [stringH drawAtPoint:textCenterH withAttributes:@{NSFontAttributeName:font,NSParagraphStyleAttributeName:style}];
     
+    //Drawing View's name in the top-right corner
+    NSString *className =  NSStringFromClass([view class]);
+    NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    /// Set line break mode
+    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+    /// Set text alignment
+    paragraphStyle.alignment = NSTextAlignmentCenter;
+    NSDictionary *attributes = @{ NSFontAttributeName: font,
+                                  NSForegroundColorAttributeName: [UIColor blackColor],
+                                  NSParagraphStyleAttributeName: paragraphStyle };
+    
+    CGSize size = [className sizeWithAttributes:attributes];
+    
+    CGPoint originName = CGPointMake(frame.origin.x+frame.size.width-padding-size.width, frame.origin.y+padding);
+    [className drawAtPoint:originName withAttributes:attributes];
     CGContextStrokePath(context);
 
 }
