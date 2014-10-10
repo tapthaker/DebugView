@@ -6,11 +6,21 @@ Debug View is a simple implementation of method swizzling to add red borders ove
 
 ## Installation  ¯\_(ツ)_/¯
 
+### Cocoapods
+
+pod 'DebugView', '~> 0.0'
+
+### From Source
+
 Download the project and copy the file in "Source" directory into your project
 
 ## Usage (•ิ_•ิ)?
 
 **Nothing to do here**, things will work automatically. YAY **＼（＾ ＾）／**
+
+When you want to stop debugging, write the following in your prefix.pch
+
+    #define NO_DEBUG_VIEW
       
 ##Examples 
 
