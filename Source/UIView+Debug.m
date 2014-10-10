@@ -10,9 +10,15 @@
 #import <objc/runtime.h>
 
 @implementation UIView (Debug)
+@dynamic debugFrameView;
 
-static DebugFrameView *debugFrameView =nil;
+-(void)setDebugFrameView:(DebugFrameView *)debugFrameView{
+    objc_setAssociatedObject(self, @selector(debugFrameView), debugFrameView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
 
+-(DebugFrameView*)debugFrameView{
+    return objc_getAssociatedObject(self, @selector(debugFrameView));
+}
 
 + (void)swizzleSelector:(SEL)originalSelector withSelector:(SEL)swizzledSelector {
     
@@ -36,12 +42,14 @@ static DebugFrameView *debugFrameView =nil;
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
+        
+#ifdef DEBUG_VIEW
+
         [self swizzleSelector:@selector(init) withSelector:@selector(init_debug)];
         [self swizzleSelector:@selector(awakeFromNib) withSelector:@selector(awakeFromNib_debug)];
         [self swizzleSelector:@selector(initWithFrame:) withSelector:@selector(initWithFrame_debug:)];
-        [self swizzleSelector:@selector(didAddSubview:) withSelector:@selector(didAddSubview_debug:)];
-        [self swizzleSelector:@selector(willRemoveSubview:) withSelector:@selector(willRemoveSubview_debug:)];
-         [self swizzleSelector:@selector(setFrame:) withSelector:@selector(setFrame_debug:)];
+        [self swizzleSelector:@selector(setFrame:) withSelector:@selector(setFrame_debug:)];
+#endif
     });
 }
 
@@ -63,39 +71,22 @@ static DebugFrameView *debugFrameView =nil;
 }
 
 -(void)commonInitialization{
+    
     self.layer.borderColor = [UIColor redColor].CGColor;
     self.layer.borderWidth = 1.0;
 
-    if ([self isKindOfClass:[UIWindow class]]) {
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            debugFrameView=[[DebugFrameView alloc]init];
-            [self addSubview:debugFrameView];
-        });
-    }
+    self.debugFrameView = [[DebugFrameView alloc]initWithFrame_debug:self.bounds];
+    [self addSubview:self.debugFrameView];
 }
 
--(void)didAddSubview_debug:(UIView *)subview{
-    [self didAddSubview_debug:subview];
-    
-    [self.window bringSubviewToFront:debugFrameView];
-    [debugFrameView.views addObject:subview];
-    [debugFrameView setNeedsDisplay];
-}
 
--(void)willRemoveSubview_debug:(UIView *)subview{
-    [self willRemoveSubview_debug:subview];
-    
-    [debugFrameView.views removeObject:subview];
-    [debugFrameView setNeedsDisplay];
-}
+
 
 -(void)setFrame_debug:(CGRect)frame{
     
     [self setFrame_debug:frame];
-    
-    [debugFrameView setNeedsDisplay];
-    
+    self.debugFrameView.frame=self.bounds;
+    [self.debugFrameView setNeedsDisplay];
 }
 
 

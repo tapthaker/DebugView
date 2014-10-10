@@ -10,6 +10,6 @@
 #import "DebugFrameView.h"
 
 @interface UIView (Debug)
-
+@property (nonatomic, strong) DebugFrameView *debugFrameView;
 
 @end

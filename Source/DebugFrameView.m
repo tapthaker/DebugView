@@ -25,15 +25,7 @@
 -(void)drawRect:(CGRect)rect{
     
     CGContextRef context = UIGraphicsGetCurrentContext();
-    if (self.window!=nil) {
-        
-    for (UIView *view in self.views) {
-        [self drawForView:view inContext:context];
-    }
-        
-        
-    }
-    
+    [self drawForView:self inContext:context];
 }
 
 -(void)didMoveToSuperview{
@@ -64,7 +56,7 @@
     
     //FOR WIDTH
     //Drawing Lines
-    CGPoint originW = CGPointMake(frame.origin.x+padding, frame.origin.y+frame.size.height-padding);
+    CGPoint originW = CGPointMake(frame.origin.x+padding, frame.origin.y+frame.size.height-2*padding);
     CGFloat lineW = frame.size.width-4*padding;
 
     CGContextMoveToPoint(context, originW.x,originW.y);
@@ -88,7 +80,7 @@
     
     //FOR HEIGHT
     //Drawing Lines
-    CGPoint originH = CGPointMake(frame.origin.x+frame.size.width-padding, frame.origin.y+padding);
+    CGPoint originH = CGPointMake(frame.origin.x+frame.size.width-2*padding, frame.origin.y+padding);
     CGFloat lineH = frame.size.height-2*padding;
     
     CGContextMoveToPoint(context,originH.x,originH.y);
@@ -111,7 +103,7 @@
     [stringH drawAtPoint:textCenterH withAttributes:@{NSFontAttributeName:font,NSParagraphStyleAttributeName:style}];
     
     //Drawing View's name in the top-right corner
-    NSString *className =  NSStringFromClass([view class]);
+    NSString *className =  NSStringFromClass([view.superview class]);
     NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     /// Set line break mode
     paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
@@ -123,10 +115,10 @@
     
     CGSize size = [className sizeWithAttributes:attributes];
     
-    CGPoint originName = CGPointMake(frame.origin.x+frame.size.width-padding-size.width, frame.origin.y+padding);
+    CGPoint originName = CGPointMake(padding+size.width/2, frame.origin.y+padding);
     [className drawAtPoint:originName withAttributes:attributes];
     CGContextStrokePath(context);
-
+    
 }
 
 
