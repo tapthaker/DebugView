@@ -8,12 +8,13 @@ Pod::Spec.new do |s|
 
   s.homepage     = "https://github.com/thegreatloser/DebugView"
   s.screenshots  = "https://raw.githubusercontent.com/thegreatloser/DebugView/master/screenshot1.png", "https://raw.githubusercontent.com/thegreatloser/DebugView/master/screenshot2.png"
-  s.license      = "MIT (example)"
+  s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author             = { "Tapan Thaker" => "tapan.d.thaker@gmail.com" }
-  s.social_media_url   = "http://twitter.com/Tapan Thaker"
-  # s.platform     = :ios
-  # s.platform     = :ios, "5.0"
+  s.social_media_url   = "http://twitter.com/tapthaker"
+  s.platform     = :ios, "5.0"
   s.source       = { :git => "https://github.com/thegreatloser/DebugView.git", :tag => "0.0.2" }
   s.source_files  = "Source"
+  s.framework    = 'UIKit'
+  s.requires_arc = true
 
 end
