@@ -43,7 +43,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
-#ifdef DEBUG_VIEW
+#ifndef NO_DEBUG_VIEW
 
         [self swizzleSelector:@selector(init) withSelector:@selector(init_debug)];
         [self swizzleSelector:@selector(awakeFromNib) withSelector:@selector(awakeFromNib_debug)];
