@@ -48,6 +48,5 @@ Follow me on Twitter ([@tapthaker](https://twitter.com/tapthaker))
 
 ## To improve
 
-* Add **cocoapods** to the project
 * More debug additions.
 * Someway to filter and display only a part of the full info.
