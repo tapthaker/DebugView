@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
 
   s.homepage     = "https://github.com/thegreatloser/DebugView"
   s.screenshots  = "https://raw.githubusercontent.com/thegreatloser/DebugView/master/screenshot1.png", "https://raw.githubusercontent.com/thegreatloser/DebugView/master/screenshot2.png"
-  s.license      = { :type => 'MIT', :file => 'LICENSE' }
+  s.license      = { :type => 'MIT', :file => 'LICENSE.txt' }
   s.author             = { "Tapan Thaker" => "tapan.d.thaker@gmail.com" }
   s.social_media_url   = "http://twitter.com/tapthaker"
   s.platform     = :ios, "5.0"
