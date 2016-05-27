@@ -6,7 +6,7 @@ Debug View is a simple implementation of method swizzling to add red borders ove
 
 ## Installation  ¯\_(ツ)_/¯
 
-### Cocoapods
+### CocoaPods
 
     pod 'DebugView', '~> 0.0'
 
